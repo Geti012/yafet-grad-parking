@@ -43,7 +43,7 @@
     }
 
     .steps {
-      margin: 18px 0;
+      margin: 20px 0;
       text-align: left;
       padding-left: 20px;
       font-size: 14px;
@@ -55,13 +55,13 @@
 
     .btn {
       display: inline-block;
-      margin-top: 10px;
-      padding: 11px 20px;
+      margin-top: 15px;
+      padding: 12px 20px;
       border-radius: 999px;
       background: #1a73e8;
       color: white;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 500;
       box-shadow: 0 6px 18px rgba(26, 115, 232, 0.45);
       transition: 0.15s;
@@ -75,19 +75,16 @@
     .note {
       font-size: 12px;
       opacity: 0.75;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .map-container {
       position: relative;
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%; /* 16:9 */
-      margin: 16px 0 6px;
-      border-radius: 12px;
-      overflow: hidden;
+      padding-bottom: 56.25%;
+      margin: 20px 0;
     }
-
     .map-container iframe {
       position: absolute;
       top: 0;
@@ -95,18 +92,13 @@
       width: 100%;
       height: 100%;
       border: 0;
+      border-radius: 12px;
     }
 
-    /* Invisible clickable layer over the map
-       so ANY click starts walking directions */
-    .map-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .image {
       width: 100%;
-      height: 100%;
-      text-indent: -9999px;
-      cursor: pointer;
+      border-radius: 12px;
+      margin: 15px 0;
     }
   </style>
 </head>
@@ -116,60 +108,30 @@
     <h1>🎓 Yafet’s Grad Party Parking Info</h1>
 
     <p>
-      Street-side parking is <strong>FREE</strong> along the highlighted route and just a short walk
-      to the apartment at:<br>
+      Street-side parking is <strong>FREE</strong> and only a short walk to the apartment:<br>
       <strong>900 N Henry St, Alexandria, VA 22314</strong>
     </p>
 
-    <ul class="steps">
-      <li>Use the first button to get driving directions to the street parking area.</li>
-      <li>After you park, tap the map or the walking button to start walking directions to the apartment.</li>
-    </ul>
-
-    <!-- Driving directions to the parking pin -->
-    <a
-      class="btn"
-      href="https://maps.app.goo.gl/vheYWAfSQ1ZHmsUg6?g_st=ipc"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      🚗 Drive to Free Street Parking
-    </a>
-
-    <!-- Map that shows the area, and clicking it opens walking directions -->
     <div class="map-container">
-      <!-- Reference map (static embed of the area) -->
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.018161692324!2d-77.07949768465281!3d38.84381907957185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b898bd2dd6a5%3A0xf85c2f9e3c9c95ed!2s900%20N%20Henry%20St%2C%20Alexandria%2C%20VA%2022314%2C%20USA!5e0!3m2!1sen!2sus!4v0000000000000"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
+        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-
-      <!-- Invisible clickable layer that opens WALKING directions -->
-      <a
-        class="map-overlay"
-        href="https://www.google.com/maps/dir/?api=1&destination=900+N+Henry+St,+Alexandria,+VA+22314&travelmode=walking"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Start walking directions
-      </a>
     </div>
 
-    <!-- Backup walking button -->
-    <a
-      class="btn"
-      href="https://www.google.com/maps/dir/?api=1&destination=900+N+Henry+St,+Alexandria,+VA+22314&travelmode=walking"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      🚶 Start Walking Directions to 900 N Henry St
+    <p>You’ll be walking from the pinned parking area to this apartment building 👇</p>
+
+    <img
+      class="image"
+      src="https://maps.googleapis.com/maps/api/streetview?size=640x360&location=900%20N%20Henry%20St%2C%20Alexandria%2C%20VA&fov=90&heading=0&pitch=0"
+      alt="Street view of 900 N Henry St, Alexandria"
+    />
+
+    <a class="btn" href="https://maps.app.goo.gl/vheYWAfSQ1ZHmsUg6?g_st=ipc" target="_blank">
+      📍 Open Parking in Google Maps
     </a>
 
-    <p class="note">
-      On your phone, tapping the map or walking button will open Google Maps with walking
-      directions straight to the apartment entrance.
-    </p>
+    <p class="note">Tap the button — opens your Maps app instantly on iPhone or Android.</p>
   </div>
 </body>
 </html>
