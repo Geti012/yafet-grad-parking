@@ -24,7 +24,7 @@
       background: rgba(255, 255, 255, 0.06);
       padding: 30px 25px;
       border-radius: 18px;
-      max-width: 480px;
+      max-width: 520px;
       width: 100%;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -32,7 +32,7 @@
 
     h1 {
       margin-top: 10px;
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 600;
     }
 
@@ -43,7 +43,7 @@
     }
 
     .steps {
-      margin: 20px 0;
+      margin: 18px 0;
       text-align: left;
       padding-left: 20px;
       font-size: 14px;
@@ -55,7 +55,7 @@
 
     .btn {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 12px 20px;
       border-radius: 999px;
       background: #1a73e8;
@@ -75,16 +75,20 @@
     .note {
       font-size: 12px;
       opacity: 0.75;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
+    /* Bigger map */
     .map-container {
       position: relative;
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%;
+      padding-bottom: 75%; /* increased from 56% → now much bigger */
       margin: 20px 0;
+      border-radius: 15px;
+      overflow: hidden;
     }
+
     .map-container iframe {
       position: absolute;
       top: 0;
@@ -92,13 +96,31 @@
       width: 100%;
       height: 100%;
       border: 0;
-      border-radius: 12px;
     }
 
-    .image {
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      border-radius: 12px;
-      margin: 15px 0;
+      height: 100%;
+      text-indent: -9999px;
+      cursor: pointer;
+    }
+
+    /* Gradient Parking Sign */
+    .parking-sign {
+      margin: 20px auto 0;
+      padding: 18px;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 300px;
+      background: linear-gradient(135deg, #1a73e8, #4dabf7, #1a73e8);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -108,30 +130,56 @@
     <h1>🎓 Yafet’s Grad Party Parking Info</h1>
 
     <p>
-      Street-side parking is <strong>FREE</strong> and only a short walk to the apartment:<br>
+      Street-side parking is <strong>FREE</strong> along the marked blue route and only a short walk to:<br>
       <strong>900 N Henry St, Alexandria, VA 22314</strong>
     </p>
 
+    <ul class="steps">
+      <li>Tap the first button for **driving directions** to the parking area.</li>
+      <li>After you park, tap the map or walking button to get **walking directions** to the apartment.</li>
+    </ul>
+
+    <!-- Driving directions -->
+    <a
+      class="btn"
+      href="https://maps.app.goo.gl/vheYWAfSQ1ZHmsUg6?g_st=ipc"
+      target="_blank"
+    >
+      🚗 Drive to Free Street Parking
+    </a>
+
+    <!-- Large interactive map -->
     <div class="map-container">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.018161692324!2d-77.07949768465281!3d38.84381907957185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b898bd2dd6a5%3A0xf85c2f9e3c9c95ed!2s900%20N%20Henry%20St%2C%20Alexandria%2C%20VA%2022314%2C%20USA!5e0!3m2!1sen!2sus!4v0000000000000"
-        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+        loading="lazy"
       ></iframe>
+
+      <!-- Click to open walking directions -->
+      <a
+        class="map-overlay"
+        href="https://www.google.com/maps/dir/?api=1&destination=900+N+Henry+St,+Alexandria,+VA+22314&travelmode=walking"
+        target="_blank"
+      >
+        Walking Directions
+      </a>
     </div>
 
-    <p>You’ll be walking from the pinned parking area to this apartment building 👇</p>
+    <!-- Gradient parking sign replaces street view -->
+    <div class="parking-sign">
+      🅿️ Free Parking → Short Walk 🚶
+    </div>
 
-    <img
-      class="image"
-      src="https://maps.googleapis.com/maps/api/streetview?size=640x360&location=900%20N%20Henry%20St%2C%20Alexandria%2C%20VA&fov=90&heading=0&pitch=0"
-      alt="Street view of 900 N Henry St, Alexandria"
-    />
-
-    <a class="btn" href="https://maps.app.goo.gl/vheYWAfSQ1ZHmsUg6?g_st=ipc" target="_blank">
-      📍 Open Parking in Google Maps
+    <!-- Walking directions button -->
+    <a
+      class="btn"
+      href="https://www.google.com/maps/dir/?api=1&destination=900+N+Henry+St,+Alexandria,+VA+22314&travelmode=walking"
+      target="_blank"
+    >
+      🚶 Start Walking Directions
     </a>
 
-    <p class="note">Tap the button — opens your Maps app instantly on iPhone or Android.</p>
+    <p class="note">Tapping the map or walking button opens walking directions on your phone.</p>
   </div>
 </body>
 </html>
